@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        container_name: nginx
+        volumes:
+            - .:/var/www/html
+        links:
+            - php:php-fpm
+        ports:
+            - 8080:80
+
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+            args:
+                ENABLE_XDEBUG: "${ENABLE_XDEBUG}"
+        container_name: php
+        volumes:
+            - .:/var/www/html

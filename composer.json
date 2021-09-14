@@ -1,0 +1,6 @@
+{
+    "require": {
+        "php": "8.0.*",
+        "symfony/var-dumper": "5.3.*"
+    }
+}
